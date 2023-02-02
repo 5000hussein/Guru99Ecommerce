@@ -3,13 +3,18 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/CS/Guru99EcommerceProject/pom.xml">
         <classes>
-            <class name="VerifyTitles">
+            <class name="VerifyMainWebPage">
                 <methods>
                     <include name="VerifyMainPageTitle"/>
-                    <include name="VerifyMobileTitle"/>
                 </methods>
             </class>
-            <class name="VerifySortByName"></class>
+            <class name="VerifyMobileWebPage">
+                <methods>
+                    <include name ="VerifyMobileTitle"/>
+                    <include name="VerifySortingByName"/>
+                    <include name="verifyXperiaPrice"/>
+                </methods>
+            </class>
 
         </classes>
     </test>
