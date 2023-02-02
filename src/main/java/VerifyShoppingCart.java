@@ -39,7 +39,8 @@ public class VerifyShoppingCart {
         addToCart.click();
 
         WebElement QTYBox =driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr/td[4]/input"));
-        QTYBox.sendKeys("000");
+        QTYBox.clear();
+        QTYBox.sendKeys("1000");
         WebElement Update =driver.findElement(By.xpath("//*[@id=\"shopping-cart-table\"]/tbody/tr/td[4]/button/span/span"));
         Update.click();
 
