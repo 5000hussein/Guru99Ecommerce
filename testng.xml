@@ -15,6 +15,12 @@
                     <include name="verifyXperiaPrice"/>
                 </methods>
             </class>
+            <class name="VerifyShoppingCart">
+                <methods>
+                    <include name="ShoppingCart"/>
+                    <include name="VerifyEmptyCart"/>
+                </methods>
+            </class>
 
         </classes>
     </test>
