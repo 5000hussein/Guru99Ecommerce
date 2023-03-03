@@ -21,6 +21,11 @@
                     <include name="VerifyEmptyCart"/>
                 </methods>
             </class>
+            <class name="VerifyComparesion">
+                <methods>
+                    <include name="Compare"/>
+                </methods>
+            </class>
 
         </classes>
     </test>
