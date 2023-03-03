@@ -26,6 +26,11 @@
                     <include name="Compare"/>
                 </methods>
             </class>
+            <class name="LoginAndWish">
+                <methods>
+                    <include name="ShareWish"/>
+                </methods>
+            </class>
 
         </classes>
     </test>
