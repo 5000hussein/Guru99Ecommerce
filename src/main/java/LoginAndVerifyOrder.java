@@ -15,10 +15,9 @@ import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
 
+public class LoginAndVerifyOrder {
 
-public class LoginAndVerifyPurchase {
-
-    WebDriver driver;
+    WebDriver driver ;
 
     @BeforeClass
     public void ChromeBrowser()
@@ -29,9 +28,8 @@ public class LoginAndVerifyPurchase {
         driver.manage().window().maximize();
     }
 
-
     @Test
-    void LoginPurchase()
+    void LoginOrderVerify()
     {
         //go to account
         driver.findElement(By.xpath("/html/body/div/div/header/div/div[2]/div/a/span[2]")).click();
@@ -42,22 +40,28 @@ public class LoginAndVerifyPurchase {
         driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div/div/form/div/div[2]/div[1]/ul/li[2]/div/input")).sendKeys("1234567890");
         //click on Login
         driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div/div/form/div/div[2]/div[2]/button")).click();
-        //click on MyWishlist tab
-        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[1]/div/div[2]/ul/li[8]/a")).click();
-        //click on add to cart
-        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/form[1]/div/table/tbody/tr/td[5]/div/button")).click();
-        //click on proceed to checkout
-        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div/div/div[1]/ul/li/button")).click();
-        //click continue
-        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[1]/ol/li[1]/div[2]/form/div/div/button")).click();
-        //click continue flat rate
-        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[1]/ol/li[3]/div[2]/form/div[3]/button")).click();
-        //click on radio Button check
-        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[1]/ol/li[4]/div[2]/form/div/dl/dt[2]/input")).click();
-        // click continue
-        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[1]/ol/li[4]/div[2]/div[2]/button")).click();
+        //click on my orders
+        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[1]/div/div[2]/ul/li[4]/a")).click();
+        //get text of the order number and the status
+        String actual = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/table/tbody/tr/td[5]/em")).getText();
+        //test pending status for the order
+        String Expected = "Pending";
+        assertEquals(actual,Expected);
+        //click on view order
+        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/table/tbody/tr/td[6]/span/a[1]")).click();
+        //click on print order
+        driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div[2]/div/div[1]/a[2]")).click();
+        //to click on the new tab
+        List<String> Tabs = new ArrayList<>(driver.getWindowHandles());
+        String Parent =Tabs.get(0);
+        String Child = Tabs.get(1);
+        driver.switchTo().window(Child);
+        //to close the popup
+        driver.switchTo().alert().accept();
+        //to click on close window
+        driver.findElement(By.xpath("/html/body/div/div[4]/button")).click();
+        }
+    }
 
-}
-}
 
 
